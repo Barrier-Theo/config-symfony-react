@@ -98,11 +98,8 @@ Les frameworks principaux qui seront installés étaient à la version suivante 
 Créer la base de données
 
 mysql -u root -p
-
 CREATE DATABASE symforeactdb 
-
 CHARACTER SET utf8;
-
 GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY 
 'apassword';
 
@@ -119,18 +116,18 @@ GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY
 
 
 <Location "/symforeact/">
-AllowOverride None
-Require all granted
-Options -Indexes
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} -f[OR]
-RewirteCond %{REQUEST_URI} ^/symforeact/?$
-RewriteRule ^ -[L]
-RewriteRule ^ app_dev.php [L]
-  
+  AllowOverride None
+  Require all granted
+  Options -Indexes
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} -f[OR]
+  RewirteCond %{REQUEST_URI} ^/symforeact/?$
+  RewriteRule ^ -[L]
+  RewriteRule ^ app_dev.php [L]
 </Location>
 
-Activer le module d’Apache pour laréécriture d’URL : $ sudo a2enmod rewrite
+Activer le module d’Apache pour laréécriture d’URL : 
+ * $ sudo a2enmod rewrite
 
 Prenez en compte les changements de configuration en exécutant la commande
  * $ sudo systemctl restart apache2
@@ -143,10 +140,9 @@ oading, etc.)
 
  * $ npm start
 
-Le serveur est de base en écoute sur le port 3000
-http://localhost:3000
+Le serveur est de base en écoute sur le port 3000 : http://localhost:3000
 
 Pour tester l'intégration avec Symfony, ou pour mettre votre serveur en production
  * $ npm run build:prod
 
-url de test :  http://localhost/symforeact/
+http://localhost/symforeact/
