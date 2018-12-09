@@ -76,3 +76,63 @@ Enjoy!
 [14]: https://symfony.com/doc/current/setup/built_in_web_server.html
 [15]: https://symfony.com/doc/current/setup.html
 # config-react-symfony
+
+Configuration mariage avec react et symfony 
+•Linux Debian: 9.6
+•Apache 2: 2.4.5
+•php: 7.0
+•composer: 1.2.2-1
+•Node.js: 8.13.0-1nodesource1
+
+Les frameworks principaux 
+qui seront installés étaient à la version suivante lors de l’édition de ce guide:
+•Symfony: 3.4.19
+•React: 16.6
+
+Créer la base de données
+mysql -u root -p
+CREATE DATABASE symforeactdb 
+CHARACTER SET utf8;
+GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY 
+'apassword';
+
+$ sudo ln 
+-s /MY_REP/mysymforeactproject/web/var/www/html/symforeact
+$ sudo chown `whoami`:www-data /MY_REP/mysymforeactproject/web
+$ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/cache
+$ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/logs
+$ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/sessions
+$ sudo chmod-R775/MY_REP/mysymforeactproject/var/cache
+$ sudo chmod-R775/MY_REP/mysymforeactproject/var/logs
+$ sudo chmod-R775/MY_REP/mysymforeactproject/var/sessions
+
+Éditez  le  fichier  /etc/apache2/sites-available/000-default.conf 
+<Location "/symforeact/">
+  AllowOverride None
+  Require all granted
+  Options -Indexes
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} -f[OR]
+  RewirteCond %{REQUEST_URI} ^/symforeact/?$
+  RewriteRule ^ -[L]
+  RewriteRule ^ app_dev.php [L]
+</Location>
+
+Activer le module d’Apache pour laréécriture d’URL
+$ sudo a2enmod rewrite
+
+Prenez en compte les changements de configuration en exécutant la commande
+$ sudo systemctl restart apache2
+
+Vous povuez donc lancer un build du frontend pour le développement
+$ npm run build:dev
+
+Pour développer rapidement, vous pouvez exécuter un serveur node (avec hot rel
+oading, etc.)
+$ npm start
+Le serveur est de base en écoute sur le port 3000
+http://localhost:3000
+
+Pour tester l'intégration avec Symfony, ou pour mettre votre serveur en production
+$ npm run build:prod
+url de test :  http://localhost/symforeact/
