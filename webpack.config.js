@@ -1,6 +1,7 @@
 const path = require('path'); //plugin de manip de fichier
 const webpack = require('webpack'); //webpack
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //Plugin de création HTML
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const webappPath = '/app/webapp/'; //Chemin de l'app
 const distPath = '/web/'; //Chemin de destination du build
@@ -11,7 +12,11 @@ module.exports = {
   //Les plugins pour "customiser" le bundling
   plugins: [
   	//Simplifie la creation de fichiers HTML pour service les bundles webpack. C'est en particulier utile pour les bundles webpack qui incluent un hash dans le nom de fichier qui change à chaque compilation. Vous pouvez soit laisser le plugin générer un fichier HTML pour vous, fournir votre propre template en utilisant les "templates loadash" ou utiliser votre propre loader.
-  	new HtmlWebpackPlugin({
+	new MiniCssExtractPlugin({
+      filename: "styles.css",
+      chunkFilename: "styles.css"
+    }),  	
+	new HtmlWebpackPlugin({
       //title: 'Hot Module Replacement',
       template: path.join(path.join(__dirname, webappPath), './index.html'),
   	  filename: 'index.html',
@@ -46,12 +51,15 @@ module.exports = {
   module: {
     rules: [
      {
-       test: /\.css$/, use: ['style-loader', 'css-loader'],
+       test: /\.css$/,
+	use: [MiniCssExtractPlugin.loader,
+          "css-loader", "postcss-loader"],
      },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader'],
       },
+  
       {
         test: /\.js|.jsx?$/,
         exclude: /(node_modules)/,

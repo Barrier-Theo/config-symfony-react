@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyComponent from './components/aTestComponent';
+import "./styles.css"
+import Index from './components/aTestComponent';
 
 ReactDOM.render(
-  <MyComponent />,
+  <Index />,
   document.getElementById('root')
 );
