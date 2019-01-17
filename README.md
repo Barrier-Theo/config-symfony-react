@@ -103,7 +103,7 @@ CHARACTER SET utf8;
 GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY 
 'apassword';
 
-  * $ sudo ln -s /MY_REP/mysymforeactproject/web/var/www/html/symforeact
+  * $ sudo ln -s /MY_REP/mysymforeactproject/web /var/www/html/symforeact
   * $ sudo chown `whoami`:www-data /MY_REP/mysymforeactproject/web
   * $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/cache
   * $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/logs
@@ -126,13 +126,13 @@ GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY
   RewriteRule ^ app_dev.php [L]
 </Location>
 
-Activer le module d’Apache pour laréécriture d’URL : 
+Activer le module d’Apache pour la réécriture d’URL : 
  * $ sudo a2enmod rewrite
 
 Prenez en compte les changements de configuration en exécutant la commande
  * $ sudo systemctl restart apache2
 
-Vous povuez donc lancer un build du frontend pour le développement
+Vous pouVez donc lancer un build du frontend pour le développement
  * $ npm run build:dev
 
 Pour développer rapidement, vous pouvez exécuter un serveur node (avec hot rel
