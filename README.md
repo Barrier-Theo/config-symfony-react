@@ -115,16 +115,26 @@ GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY
 Éditez  le  fichier  /etc/apache2/sites-available/000-default.conf :
 
 
-<Location "/symforeact/">
-  AllowOverride None
-  Require all granted
-  Options -Indexes
-  RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME} -f[OR]
-  RewirteCond %{REQUEST_URI} ^/symforeact/?$
-  RewriteRule ^ -[L]
-  RewriteRule ^ app_dev.php [L]
-</Location>
+<VirtualHost *:80>
+        ServerAdmin webmaster@example.com
+        ServerName ladiwa-cours01.univ-lemans.fr
+        DocumentRoot "/var/www/html/symforeact/"
+        <Location "/symforeact/">
+                AllowOverride None
+                Require all granted
+                Options -Indexes
+
+                RewriteEngine On
+                RewriteBase /
+                RewriteCond %{REQUEST_FILENAME} -f [OR]
+                RewriteCond %{REQUEST_URI} ^/symforeact/?$
+                RewriteRule ^ - [L]
+                RewriteRule ^ app_dev.php [L]
+        </Location>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 
 Activer le module d’Apache pour la réécriture d’URL : 
  * $ sudo a2enmod rewrite
