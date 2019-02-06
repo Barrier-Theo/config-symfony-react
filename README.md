@@ -138,22 +138,26 @@ Créer la base de données
      </VirtualHost> 
 
 Activer le module d’Apache pour la réécriture d’URL : 
- * $ sudo a2enmod rewrite
+
+    $ sudo a2enmod rewrite
 
 Prenez en compte les changements de configuration en exécutant la commande
- * $ sudo systemctl restart apache2
+    
+    $ sudo systemctl restart apache2
 
 Vous pouVez donc lancer un build du frontend pour le développement
- * $ npm run build:dev
+   
+    $ npm run build:dev
 
 Pour développer rapidement, vous pouvez exécuter un serveur node (avec hot rel
 oading, etc.)
 
- * $ npm start
+    $ npm start
 
 Le serveur est de base en écoute sur le port 3000 : http://localhost:3000
 
 Pour tester l'intégration avec Symfony, ou pour mettre votre serveur en production
- * $ npm run build:prod
+   
+    $ npm run build:prod
 
 http://localhost/symforeact/
