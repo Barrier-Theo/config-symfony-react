@@ -115,7 +115,7 @@ GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY
 Éditez  le  fichier  /etc/apache2/sites-available/000-default.conf :
 
 
-<VirtualHost *:80>
+`<VirtualHost *:80>
         ServerAdmin webmaster@example.com
         ServerName ladiwa-cours01.univ-lemans.fr
         DocumentRoot "/var/www/html/symforeact/"
@@ -134,7 +134,7 @@ GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY
 
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
+</VirtualHost> `
 
 Activer le module d’Apache pour la réécriture d’URL : 
  * $ sudo a2enmod rewrite
