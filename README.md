@@ -97,20 +97,20 @@ Les frameworks principaux qui seront installés étaient à la version suivante 
 
 Créer la base de données
 
-mysql -u root -p
-CREATE DATABASE symforeactdb 
-CHARACTER SET utf8;
-GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY 
-'apassword';
+    mysql -u root -p
+    CREATE DATABASE symforeactdb 
+    CHARACTER SET utf8;
+    GRANT ALL ON symforeactdb.* TO symforeactuser IDENTIFIED BY 
+    'apassword';
 
-  * $ sudo ln -s /MY_REP/mysymforeactproject/web /var/www/html/symforeact
-  * $ sudo chown `whoami`:www-data /MY_REP/mysymforeactproject/web
-  * $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/cache
-  * $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/logs
-  * $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/sessions
-  * $ sudo chmod-R775/MY_REP/mysymforeactproject/var/cache
-  * $ sudo chmod-R775/MY_REP/mysymforeactproject/var/logs
-  * $ sudo chmod-R775/MY_REP/mysymforeactproject/var/sessions
+      $ sudo ln -s /MY_REP/mysymforeactproject/web /var/www/html/symforeact
+      $ sudo chown `whoami`:www-data /MY_REP/mysymforeactproject/web
+      $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/cache
+      $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/logs
+      $ sudo chown-R`whoami`:www-data/MY_REP/mysymforeactproject/var/sessions
+      $ sudo chmod-R775/MY_REP/mysymforeactproject/var/cache
+      $ sudo chmod-R775/MY_REP/mysymforeactproject/var/logs
+      $ sudo chmod-R775/MY_REP/mysymforeactproject/var/sessions
 
 Éditez  le  fichier  /etc/apache2/sites-available/000-default.conf :
 
