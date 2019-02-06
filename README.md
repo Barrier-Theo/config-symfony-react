@@ -145,11 +145,11 @@ Prenez en compte les changements de configuration en exécutant la commande
     
     $ sudo systemctl restart apache2
 
-Vous pouVez donc lancer un build du frontend pour le développement
+Vous pouvez donc lancer un build du frontend pour le développement
    
     $ npm run build:dev
 
-Pour développer rapidement, vous pouvez exécuter un serveur node (avec hot rel
+Pour développer rapidement, vous pouvez exécuter un serveur node (avec hotrel
 oading, etc.)
 
     $ npm start
